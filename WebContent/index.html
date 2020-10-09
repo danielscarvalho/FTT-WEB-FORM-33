@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+	font-family: Verdana, Arial, sans-serif;
+}
+</style>
+<title>FTT - User Form</title>
+</head>
+<body>
+<h1>FTT - User Form</h1>
+<form method="POST" action="/FTT-WEB-FORM-33/user">
+  <fieldset>
+    <legend>User info:</legend>
+<p><label>ID</label><input type="number" id="userId" name="userId" required></p>
+<p><label>Name</label><input type="text"  id="userName" name="userName" required></p>
+<p><label>E-Mail</label><input type="email"  id="userEmail" name="userEmail" required></p>
+<p><label>Color</label><input type="color"  id="userColor" name="userColor" required></p>
+<p><label>DOB</label><input type="date"  id="userDob" name="userDob" required></p>
+<p>
+<label for="userCar">Choose a car:</label>
+<select id="userCar" name="userCar">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select>
+</p>
+
+<input type="submit">
+</fieldset>
+</form>
+  
+    
+
+</body>
+</html>
