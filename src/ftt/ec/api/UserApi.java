@@ -66,12 +66,22 @@ public class UserApi extends HttpServlet {
 		 */
 		Gson gson = new Gson();
 		
-		int userId = Integer.valueOf(request.getParameter("userId"));
+		if (request.getParameter("userId") != null) {
 		
-		response.getWriter()
-		       // .append("OBJ User: ").append(userData.get(Integer.valueOf(request.getParameter("userId"))).toString())
-		          .append(gson.toJson(userData.get(userId)));
-	}
+			int userId = Integer.valueOf(request.getParameter("userId"));
+		
+			response.getWriter()
+		       	 // .append("OBJ User: ").append(userData.get(Integer.valueOf(request.getParameter("userId"))).toString())
+					.append(gson.toJson(userData.get(userId)));
+		
+		} else {			
+		
+			response.getWriter()
+		          .append(gson.toJson(userData));
+			
+		} //if
+		
+	} //doGet
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
