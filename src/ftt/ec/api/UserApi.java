@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+//TODO: Persistir dados no Banco de Dados MySQL
+//TODO: Resolver issue UTF-8
+//TODO: Criar novos forms...
+
 /**
  * Servlet implementation class UserApi
  */
@@ -52,12 +58,19 @@ public class UserApi extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json"); //Mime type
 		
+		/*
+		 *    String json = new Gson().toJson(someObject);
+              https://github.com/google/gson
+		 */
+		Gson gson = new Gson();
 		
+		int userId = Integer.valueOf(request.getParameter("userId"));
 		
 		response.getWriter()
-		        .append("OBJ User: ").append(userData.get(Integer.valueOf(request.getParameter("userId"))).toString())
-				;
+		       // .append("OBJ User: ").append(userData.get(Integer.valueOf(request.getParameter("userId"))).toString())
+		          .append(gson.toJson(userData.get(userId)));
 	}
 
 	/**
@@ -88,7 +101,7 @@ public class UserApi extends HttpServlet {
         	.append("{\"status\":\"ok\",\"timestemp\":\"" + new Date() + "\"}");
 
 }
-
+//TODO: Refactor it is scarry!! :-o
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
